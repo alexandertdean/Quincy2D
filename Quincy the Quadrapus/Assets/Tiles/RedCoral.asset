@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: CobbleBasic
+  m_Name: RedCoral
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 6da17996730af644a8f459c34b4cd545, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2608d652bc506244e890496c4fbb8758, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
