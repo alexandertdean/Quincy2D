@@ -14,11 +14,15 @@ public class DisableRoomOnEnter : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        obj.enabled = false;
+        if (other.tag == "Player") {
+            obj.enabled = false;
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        obj.enabled = true;
+        if (other.tag == "Player") {
+            obj.enabled = true;
+        }
     }
 }
