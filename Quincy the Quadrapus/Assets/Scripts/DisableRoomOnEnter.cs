@@ -10,14 +10,6 @@ public class DisableRoomOnEnter : MonoBehaviour
     void Start()
     {
         obj = GetComponent<UnityEngine.Tilemaps.TilemapRenderer>();
-        Debug.Log("StarT");
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void OnTriggerEnter2D(Collider2D other)

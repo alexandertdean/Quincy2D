@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &833673085444209301
+--- !u!1 &559331558353216135
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 833673085722118672}
-  - component: {fileID: 833673085444209326}
-  - component: {fileID: 833673085444209297}
-  - component: {fileID: 833673085444209296}
-  - component: {fileID: 833673085444209299}
-  - component: {fileID: 833673085444209298}
-  m_Layer: 0
+  - component: {fileID: 559331558437657582}
+  - component: {fileID: 559331558353216140}
+  - component: {fileID: 559331558353216139}
+  - component: {fileID: 559331558353216138}
+  - component: {fileID: 559331558353216137}
+  - component: {fileID: 559331558353216136}
+  m_Layer: 8
   m_Name: Quincy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &833673085722118672
+--- !u!4 &559331558437657582
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 833673085444209301}
+  m_GameObject: {fileID: 559331558353216135}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.04067099, y: -0.242998, z: 0}
+  m_LocalPosition: {x: 0.793, y: 1.208, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &833673085444209326
+--- !u!212 &559331558353216140
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 833673085444209301}
+  m_GameObject: {fileID: 559331558353216135}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -83,14 +83,14 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &833673085444209297
+--- !u!50 &559331558353216139
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 833673085444209301}
+  m_GameObject: {fileID: 559331558353216135}
   m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
@@ -104,13 +104,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &833673085444209296
+--- !u!114 &559331558353216138
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 833673085444209301}
+  m_GameObject: {fileID: 559331558353216135}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd7c91aa1aab9be4eb46e1d1d585f4cb, type: 3}
@@ -118,17 +118,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
   gravityModifier: 1
-  maxSpeed: 3
-  jumpTakeOffSpeed: 4
+  maxSpeed: 7
+  jumpTakeOffSpeed: 7
   particleSystem: {fileID: 0}
---- !u!95 &833673085444209299
+--- !u!95 &559331558353216137
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 833673085444209301}
+  m_GameObject: {fileID: 559331558353216135}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 259f1ec576d1a7c49a76f060d0fa5852, type: 2}
@@ -140,29 +140,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &833673085444209298
+--- !u!61 &559331558353216136
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 833673085444209301}
+  m_GameObject: {fileID: 559331558353216135}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0010082126, y: 0.0005040914}
+  m_Offset: {x: 0.00056374073, y: 0.0005041957}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2635399, y: 0.3028604}
+  m_Size: {x: 0.9394784, y: 0.9379281}
   m_EdgeRadius: 0

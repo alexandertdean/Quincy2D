@@ -31,7 +31,8 @@ public class PlayerPlatformerController : PhysicsObject {
         } 
         else if (Input.GetButtonDown("Jump") && doubleAvailable) {
             velocity.y = jumpTakeOffSpeed;
-            particleSystem.transform.position = transform.position;
+            particleSystem.Clear();
+            particleSystem.transform.position = new Vector3(transform.position.x, transform.position.y, 3.0f);
             particleSystem.Play();
             doubleAvailable = false;
         }
