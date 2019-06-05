@@ -1,4 +1,4 @@
-##Quincy the Quadrapus
+## Quincy the Quadrapus
 ### 2D Platformer Built in Unity Engine
 
 ## Description
