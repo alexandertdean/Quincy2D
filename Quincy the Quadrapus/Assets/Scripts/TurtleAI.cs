@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurtleBehavior : MonoBehaviour
+public class TurtleAI : MonoBehaviour
 {
 
     private Rigidbody2D rigidbody;

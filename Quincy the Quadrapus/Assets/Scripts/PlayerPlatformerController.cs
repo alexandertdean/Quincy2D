@@ -12,6 +12,7 @@ public class PlayerPlatformerController : PhysicsObject {
     public ParticleSystem particleSystem;
     private bool doubleAvailable;
     private BoxCollider2D col;
+    private bool hitEnemy;
 
     // Use this for initialization
     void Awake () 
@@ -20,6 +21,7 @@ public class PlayerPlatformerController : PhysicsObject {
         animator = GetComponent<Animator> ();
         doubleAvailable = true;
         col = GetComponent<BoxCollider2D>();
+        hitEnemy = false;
     }
 
     protected override void ComputeVelocity()
@@ -52,6 +54,11 @@ public class PlayerPlatformerController : PhysicsObject {
             }
         }
         
+        if (hitEnemy) {
+            velocity.y = .9f * jumpTakeOffSpeed;
+            hitEnemy = false;
+        }
+
         if (!doubleAvailable && grounded) {
             doubleAvailable = true;
         }
@@ -68,5 +75,14 @@ public class PlayerPlatformerController : PhysicsObject {
         animator.SetFloat ("velocityY", velocity.y);
 
         targetVelocity = move * maxSpeed;
+    }
+
+    public bool setHitEnemy(bool val) {
+        if (velocity.y < 0) {
+            hitEnemy = val;
+            return true;
+        }
+        else return false;
+
     }
 }
