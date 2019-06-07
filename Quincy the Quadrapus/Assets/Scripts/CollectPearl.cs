@@ -2,21 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DealDamage : MonoBehaviour
+public class CollectPearl : MonoBehaviour
 {
-    public int damage;
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player") 
-        {
-            // do damage logic here
-            Destroy(other.gameObject);
-        }
+        Destroy(this.gameObject);
+        // do level win logic here
     }
 }
