@@ -11,6 +11,7 @@ public class PlayerPlatformerController : PhysicsObject {
     private Animator animator;
     public ParticleSystem particleSystem;
     private bool doubleAvailable;
+    private BoxCollider2D col;
 
     // Use this for initialization
     void Awake () 
@@ -18,6 +19,7 @@ public class PlayerPlatformerController : PhysicsObject {
         spriteRenderer = GetComponent<SpriteRenderer> ();    
         animator = GetComponent<Animator> ();
         doubleAvailable = true;
+        col = GetComponent<BoxCollider2D>();
     }
 
     protected override void ComputeVelocity()
@@ -25,9 +27,16 @@ public class PlayerPlatformerController : PhysicsObject {
         Vector2 move = Vector2.zero;
 
         move.x = Input.GetAxis ("Horizontal");
-
+        if (move.x != 0f && this.transform.parent != null)
+        {
+            this.velocity.x = 0f;
+            this.transform.parent = null;
+        }
         if (Input.GetButtonDown ("Jump") && grounded) {
             velocity.y = jumpTakeOffSpeed;
+            if (this.transform.parent != null) {
+                this.transform.parent = null;
+            }
         } 
         else if (Input.GetButtonDown("Jump") && doubleAvailable) {
             velocity.y = jumpTakeOffSpeed;
@@ -42,7 +51,7 @@ public class PlayerPlatformerController : PhysicsObject {
                 velocity.y = velocity.y * 0.5f;
             }
         }
-
+        
         if (!doubleAvailable && grounded) {
             doubleAvailable = true;
         }
@@ -53,8 +62,9 @@ public class PlayerPlatformerController : PhysicsObject {
             spriteRenderer.flipX = !spriteRenderer.flipX;
         }
 
+        
         animator.SetBool ("grounded", grounded);
-        animator.SetFloat ("velocityX", Mathf.Abs (velocity.x) / maxSpeed);
+        animator.SetFloat ("velocityX", Mathf.Abs (move.x) / maxSpeed);
         animator.SetFloat ("velocityY", velocity.y);
 
         targetVelocity = move * maxSpeed;
