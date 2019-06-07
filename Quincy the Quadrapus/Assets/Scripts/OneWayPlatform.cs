@@ -16,14 +16,18 @@ public class OneWayPlatform : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.bounds.center.y - other.bounds.extents.y < collider.bounds.center.y + collider.bounds.extents.y) {
-            collider.enabled = false;
+        if (other.tag == "Player") {
+            if (other.bounds.center.y - other.bounds.extents.y < collider.bounds.center.y + collider.bounds.extents.y) {
+                collider.enabled = false;
+            }
         }
 
     }
 
     void OnTriggerExit2D(Collider2D other)
-    {
+    {   if (other.tag == "Player") {
             collider.enabled = true;
+        }
     }
+
 }
