@@ -13,6 +13,8 @@ public class PlayerPlatformerController : PhysicsObject {
     private bool doubleAvailable;
     private BoxCollider2D col;
     private bool hitEnemy;
+    private bool inBucket;
+    private BoxCollider2D bucketTrigger;
 
     // Use this for initialization
     void Awake () 
@@ -22,6 +24,7 @@ public class PlayerPlatformerController : PhysicsObject {
         doubleAvailable = true;
         col = GetComponent<BoxCollider2D>();
         hitEnemy = false;
+        inBucket = false;
     }
 
     protected override void ComputeVelocity()
@@ -34,34 +37,41 @@ public class PlayerPlatformerController : PhysicsObject {
             this.velocity.x = 0f;
             this.transform.parent = null;
         }
-        if (Input.GetButtonDown ("Jump") && grounded) {
-            velocity.y = jumpTakeOffSpeed;
-            if (this.transform.parent != null) {
-                this.transform.parent = null;
+        if (!inBucket) {
+            if (Input.GetButtonDown ("Jump") && grounded) {
+                velocity.y = jumpTakeOffSpeed;
+                if (this.transform.parent != null) {
+                    this.transform.parent = null;
+                }
+            } 
+            else if (Input.GetButtonDown("Jump") && doubleAvailable) {
+                velocity.y = jumpTakeOffSpeed;
+                particleSystem.Clear();
+                particleSystem.transform.position = new Vector3(transform.position.x, transform.position.y, 3.0f);
+                particleSystem.Play();
+                doubleAvailable = false;
             }
-        } 
-        else if (Input.GetButtonDown("Jump") && doubleAvailable) {
-            velocity.y = jumpTakeOffSpeed;
-            particleSystem.Clear();
-            particleSystem.transform.position = new Vector3(transform.position.x, transform.position.y, 3.0f);
-            particleSystem.Play();
-            doubleAvailable = false;
-        }
-        else if (Input.GetButtonUp ("Jump")) 
-        {
-            if (velocity.y > 0) {
-                velocity.y = velocity.y * 0.5f;
+            else if (Input.GetButtonUp ("Jump")) 
+            {
+                if (velocity.y > 0) {
+                    velocity.y = velocity.y * 0.5f;
+                }
+            }
+            if (!doubleAvailable && grounded) {
+                doubleAvailable = true;
             }
         }
-        
+        else {
+            if (grounded) {
+                velocity.y = .8f * jumpTakeOffSpeed;
+            }
+        }
         if (hitEnemy) {
             velocity.y = .9f * jumpTakeOffSpeed;
             hitEnemy = false;
         }
 
-        if (!doubleAvailable && grounded) {
-            doubleAvailable = true;
-        }
+        
 
         bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < -0.01f));
         if (flipSprite) 
@@ -69,7 +79,7 @@ public class PlayerPlatformerController : PhysicsObject {
             spriteRenderer.flipX = !spriteRenderer.flipX;
         }
 
-        
+        animator.SetBool ("inBucket", inBucket);
         animator.SetBool ("grounded", grounded);
         animator.SetFloat ("velocityX", Mathf.Abs (move.x) / maxSpeed);
         animator.SetFloat ("velocityY", velocity.y);
@@ -84,5 +94,23 @@ public class PlayerPlatformerController : PhysicsObject {
         }
         else return false;
 
+    }
+
+    public bool setInBucket(bool val, BoxCollider2D trigger)
+    {
+        Debug.Log(val);
+        if (velocity.y < 0)
+        {
+            if (val) {
+                inBucket = true;
+                trigger.gameObject.transform.parent.transform.parent = transform;
+                bucketTrigger = trigger;
+            }
+            else {
+                inBucket = val;
+            }
+            return true;
+        }
+        else return false;
     }
 }

@@ -24,12 +24,19 @@ public class PlayerInteraction : MonoBehaviour
                 case "MovingPlatform":
                     break;
                 case "Enemy":
-                        if (other.bounds.center.y - other.bounds.extents.y >= trigger.bounds.center.y - trigger.bounds.extents.y) {
-                            if (other.gameObject.GetComponent<PlayerPlatformerController>().setHitEnemy(true)) {
-                                Destroy(this.gameObject);
-                                Destroy(this.transform.parent.gameObject);
-                            }
+                    if (other.bounds.center.y >= trigger.bounds.center.y - trigger.bounds.extents.y) {
+                        if (other.gameObject.GetComponent<PlayerPlatformerController>().setHitEnemy(true)) {
+                            Destroy(this.gameObject);
+                            Destroy(this.transform.parent.gameObject);
                         }
+                    }
+                    break;
+                case "Bucket":
+                    if (other.bounds.center.y - other.bounds.extents.y >= trigger.bounds.center.y - .2) {
+                        if (other.gameObject.GetComponent<PlayerPlatformerController>().setInBucket(true, trigger)) {
+                            this.transform.parent.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                        }
+                    }
                     break;
                 default:
                     Debug.Log("Invalid tag assigned to collider player is interacting with");
@@ -50,6 +57,8 @@ public class PlayerInteraction : MonoBehaviour
                     break;
                 case "Enemy":
                     break;
+                case "Bucket":
+                    break;
                 default:
                     Debug.Log("Invalid tag assigned to collider player is interacting with");
                     break;
@@ -65,6 +74,8 @@ public class PlayerInteraction : MonoBehaviour
                     }
                     break;
                 case "Enemy":
+                    break;
+                case "Bucket":
                     break;
                 default:
                     Debug.Log("Invalid tag assigned to collider player is interacting with");
@@ -82,6 +93,8 @@ public class PlayerInteraction : MonoBehaviour
                     break;
                 case "Enemy":
                     playerBody.velocity = new Vector2(0,0);
+                    break;
+                case "Bucket":
                     break;
                 default:
                     Debug.Log("Invalid tag assigned to collider player is interacting with");
